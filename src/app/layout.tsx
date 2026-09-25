@@ -31,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to content
         </a>
-        <div id="top" className="mx-auto max-w-[1600px] md:border-[14px] md:border-forest">
+        <div id="top">
           {children}
         </div>
       </body>
