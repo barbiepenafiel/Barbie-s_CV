@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Barbie Peñafiel — Personal CV
 
-## Getting Started
+A single-page personal CV built with Next.js (App Router) and Tailwind CSS.
 
-First, run the development server:
+## Running locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Editing your content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All personal content (name, role, introduction, education, skills,
+experience, and contact details) lives in one file:
 
-## Learn More
+```
+src/lib/content.ts
+```
 
-To learn more about Next.js, take a look at the following resources:
+Edit the values there — no component code needs to change. A few notes:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Introduction**: currently `null`, which shows a placeholder on the
+  page. Set it to a string (2–3 sentences) to replace it.
+- **Skills**: currently an empty array, which shows a "coming soon"
+  placeholder. Add skill names as strings, e.g.
+  `["Figma", "UI Design", "HTML & CSS"]`.
+- **Education / Experience**: each is an array of objects — add, remove,
+  or edit entries as needed.
+- **Portrait**: replace `public/images/barbie-portrait.png` with a new
+  image (same filename, or update the path in `content.ts`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project structure
 
-## Deploy on Vercel
+```
+src/
+  app/
+    layout.tsx      # fonts, metadata, page frame/border
+    page.tsx         # assembles the sections
+    globals.css       # color tokens, fonts, base styles
+  components/
+    SiteHeader.tsx
+    ProfileSection.tsx
+    EducationSection.tsx
+    SkillsExperienceSection.tsx
+    ContactSection.tsx
+    SiteFooter.tsx
+    SectionHeading.tsx
+    icons.tsx
+  lib/
+    content.ts        # <- all personal content
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Building for production
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm run start
+```
+
+## Deploying to Vercel
+
+**Option A — Vercel CLI (fastest, no GitHub needed):**
+
+```bash
+npm install -g vercel
+vercel login
+vercel        # deploy a preview
+vercel --prod # deploy to production
+```
+
+**Option B — GitHub + Vercel dashboard:**
+
+1. Push this project to a GitHub repository.
+2. Go to [vercel.com/new](https://vercel.com/new), import the repository.
+3. Framework preset "Next.js" is auto-detected — no extra config needed.
+4. Click Deploy. Vercel will give you a live `*.vercel.app` URL.
+
+No environment variables, database, or auth setup are required — this
+is a static, single-page site.
