@@ -3,8 +3,11 @@
 ## Student Information
 
 Name: Barbie Peñafiel  
+
 College: Davao del Norte State College 
+
 Year Level: 4th Year  
+
 Set/Section: BSIT 4C
 
 Subject: IT415 -APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES
