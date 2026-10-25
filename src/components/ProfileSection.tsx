@@ -1,73 +1,76 @@
 import Image from "next/image";
 import { profile } from "@/lib/content";
-
+import { ArrowUpRightIcon } from "./icons";
+import { SocialLinks } from "./SocialLinks";
 export function ProfileSection() {
   return (
     <section
+      tabIndex={-1}
       id="profile"
       aria-labelledby="profile-heading"
-      className="flex min-h-screen flex-col px-6 pb-16 pt-20 sm:px-10"
+      className="wrap pb-8 pt-10 sm:pt-14 lg:pt-16"
     >
-      <div className="mx-auto grid w-full max-w-7xl flex-1 gap-10 md:grid-cols-[1.4fr_1fr] md:items-center md:gap-14">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent">
-            {profile.role}
-          </p>
-
+      <div className="mb-9 flex flex-wrap justify-between gap-3 border-b border-border pb-4 text-muted">
+        <p className="eyebrow">Design with intention. Build with care.</p>
+        <p className="eyebrow">Personal portfolio / CV</p>
+      </div>
+      <div className="grid items-center gap-10 lg:grid-cols-[1.35fr_1fr] lg:gap-16">
+        <div className="hero-enter py-3 lg:py-8">
+          <p className="eyebrow text-muted">{profile.role}</p>
           <h1
             id="profile-heading"
-            className="mt-4 break-words font-display uppercase leading-[0.85] text-ink text-[clamp(3.5rem,12vw,9rem)]"
+            className="display my-6 text-[clamp(3.7rem,10.3vw,8.5rem)] leading-[.96]"
           >
             <span className="block">{profile.firstName}</span>
-            <span className="block text-accent">{profile.lastName}</span>
+            <span className="block italic">
+              {profile.lastName}
+              <span className="font-sans text-[.45em] not-italic">.</span>
+            </span>
           </h1>
-
-          <div className="mt-5 max-w-xl">
-            {profile.introduction ? (
-              <p className="text-base leading-relaxed text-ink/75 sm:text-lg">
-                {profile.introduction}
-              </p>
-            ) : (
-              <p className="rounded-sm border border-dashed border-accent/50 bg-accent/5 px-4 py-3 text-sm italic text-ink/60">
-                Placeholder — add a short introduction in{" "}
-                <code className="not-italic">src/lib/content.ts</code>.
-              </p>
-            )}
+          <p className="max-w-md text-sm leading-7 text-muted sm:text-base">
+            {profile.introduction}
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href="#projects" className="button button-primary">
+              View My Work
+              <ArrowUpRightIcon />
+            </a>
+            <a href="#contact" className="button">
+              Contact Me
+              <ArrowUpRightIcon />
+            </a>
           </div>
-
-          <div className="mt-7 flex flex-wrap gap-4">
-            <a
-              href="#contact"
-              className="inline-flex items-center bg-forest px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-cream transition-colors hover:bg-accent"
-            >
-              Get in Touch
-            </a>
-            <a
-              href="#skills-experience"
-              className="inline-flex items-center border border-forest px-6 py-3 text-sm font-semibold uppercase tracking-[0.15em] text-ink transition-colors hover:bg-forest hover:text-cream"
-            >
-              View Skills
-            </a>
+          <div className="mt-7">
+            <SocialLinks />
           </div>
         </div>
-
-        <div className="relative mx-auto aspect-[3/4] w-full max-w-sm md:max-w-full">
-          <div
-            className="absolute inset-0 translate-x-5 translate-y-5 rounded-full bg-accent"
-            aria-hidden="true"
-          />
-          <div className="relative h-full w-full overflow-hidden rounded-full border-4 border-cream shadow-2xl ring-1 ring-ink/5">
+        <figure className="hero-enter-delayed mx-auto w-full max-w-md lg:max-w-none">
+          <div className="relative aspect-[4/5] overflow-hidden border border-border bg-surface">
             <Image
               src={profile.portrait.src}
               alt={profile.portrait.alt}
               fill
-              sizes="(min-width: 768px) 400px, 80vw"
+              sizes="(min-width: 1280px) 485px, (min-width: 1024px) 40vw, (min-width: 500px) 448px, calc(100vw - 48px)"
               className="object-cover object-top"
-              quality={95}
-              priority
+              preload
             />
+            <span className="absolute bottom-4 left-4 bg-background px-3 py-2 text-[10px] uppercase tracking-[.18em]">
+              A balance of logic & creativity
+            </span>
           </div>
-        </div>
+          <figcaption className="mt-3 flex justify-between gap-3 text-[11px] text-muted">
+            <span>
+              {profile.firstName} {profile.lastName}
+            </span>
+            <span>Designer & Developer</span>
+          </figcaption>
+        </figure>
+      </div>
+      <div className="mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-border pt-5 text-xs text-muted">
+        <p>{profile.location}</p>
+        <a href="#about" className="text-link">
+          Explore my profile <span aria-hidden="true">↓</span>
+        </a>
       </div>
     </section>
   );

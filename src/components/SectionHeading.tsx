@@ -1,18 +1,11 @@
-type SectionHeadingProps = {
-  index: string;
-  title: string;
-};
-
-export function SectionHeading({ index, title }: SectionHeadingProps) {
+type SectionHeadingProps = { index: string; title: string; id: string };
+export function SectionHeading({ index, title, id }: SectionHeadingProps) {
   return (
-    <div className="flex items-baseline gap-3">
-      <span className="font-sans text-xs font-semibold tracking-[0.25em] text-accent">
+    <div className="section-heading">
+      <span className="number" aria-hidden="true">
         {index}
       </span>
-      <h2 className="font-sans text-xs font-semibold uppercase tracking-[0.35em] text-ink/70">
-        {title}
-      </h2>
-      <span className="h-px flex-1 bg-line" aria-hidden="true" />
+      <h2 id={id}>{title}</h2>
     </div>
   );
 }

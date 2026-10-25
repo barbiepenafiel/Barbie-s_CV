@@ -1,117 +1,100 @@
 "use client";
-
 import { useState } from "react";
 import { profile } from "@/lib/content";
-
-type Field = { name: string; email: string; message: string };
-type Status = "idle" | "sending" | "sent";
-
+import { ArrowUpRightIcon } from "./icons";
 export function ContactForm() {
-  const [fields, setFields] = useState<Field>({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<Status>("idle");
-
-  function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  }
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setStatus("sending");
-
-    const subject = encodeURIComponent(`Message from ${fields.name} — via CV`);
+  const [prepared, setPrepared] = useState(false);
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const subject = encodeURIComponent(
+      `Portfolio enquiry from ${data.get("name")}`,
+    );
     const body = encodeURIComponent(
-      `Hi Barbie,\n\nMy name is ${fields.name} (${fields.email}).\n\n${fields.message}`
+      `Hi ${profile.firstName},\n\n${data.get("message")}\n\nFrom: ${data.get("name")}\nReply to: ${data.get("email")}`,
     );
     window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
-
-    setTimeout(() => {
-      setStatus("sent");
-      setFields({ name: "", email: "", message: "" });
-    }, 600);
+    setPrepared(true);
   }
-
-  if (status === "sent") {
-    return (
-      <div className="flex flex-col items-center justify-center gap-4 rounded-sm border border-accent/30 bg-accent/5 px-8 py-16 text-center">
-        <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent text-cream text-xl font-bold">
-          ✓
-        </span>
-        <p className="text-lg font-semibold text-ink">Message ready to send!</p>
-        <p className="text-sm text-ink/60">
-          Your email client opened with the message pre-filled. Just hit send.
-        </p>
-        <button
-          onClick={() => setStatus("idle")}
-          className="mt-2 text-xs font-semibold uppercase tracking-[0.2em] text-accent underline-offset-4 hover:underline"
-        >
-          Send another
-        </button>
-      </div>
-    );
-  }
-
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <div className="grid gap-4 sm:grid-cols-2">
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="name" className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/50">
-            Name
+    <form
+      onSubmit={handleSubmit}
+      action={`mailto:${profile.email}`}
+      method="post"
+      encType="text/plain"
+      className="space-y-5"
+    >
+      <p id="email-help" className="text-xs leading-6 text-muted">
+        This form prepares a draft in your email app. Review and send it there;
+        no message is sent by this website.
+      </p>
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="name" className="eyebrow mb-2 block">
+            Your name
           </label>
           <input
+            className="field"
             id="name"
             name="name"
-            type="text"
+            autoComplete="name"
+            placeholder="Full name"
             required
-            value={fields.name}
-            onChange={handleChange}
-            placeholder="Your name"
-            className="rounded-sm border border-line bg-transparent px-4 py-3 text-sm text-ink placeholder:text-ink/30 outline-none transition-colors focus:border-accent"
+            maxLength={100}
           />
         </div>
-
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="email" className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/50">
-            Email
+        <div>
+          <label htmlFor="email" className="eyebrow mb-2 block">
+            Your email
           </label>
           <input
+            className="field"
             id="email"
             name="email"
             type="email"
+            autoComplete="email"
+            placeholder="you@example.com"
             required
-            value={fields.email}
-            onChange={handleChange}
-            placeholder="your@email.com"
-            className="rounded-sm border border-line bg-transparent px-4 py-3 text-sm text-ink placeholder:text-ink/30 outline-none transition-colors focus:border-accent"
+            maxLength={254}
           />
         </div>
       </div>
-
-      <div className="flex flex-col gap-1.5">
-        <label htmlFor="message" className="text-xs font-semibold uppercase tracking-[0.2em] text-ink/50">
-          Message
+      <div>
+        <label htmlFor="message" className="eyebrow mb-2 block">
+          What’s on your mind?
         </label>
         <textarea
+          className="field min-h-36 resize-y"
           id="message"
           name="message"
-          required
-          rows={5}
-          value={fields.message}
-          onChange={handleChange}
           placeholder="Tell me about your project or opportunity…"
-          className="resize-none rounded-sm border border-line bg-transparent px-4 py-3 text-sm text-ink placeholder:text-ink/30 outline-none transition-colors focus:border-accent"
+          required
+          rows={4}
+          maxLength={3000}
         />
       </div>
-
       <button
+        className="button button-primary w-full"
         type="submit"
-        disabled={status === "sending"}
-        className="group flex items-center justify-between gap-4 bg-forest px-6 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-cream transition-colors hover:bg-accent disabled:opacity-60"
+        aria-describedby="email-help"
       >
-        <span>{status === "sending" ? "Opening email…" : "Send Message"}</span>
-        <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
-          →
-        </span>
+        Prepare Email
+        <ArrowUpRightIcon />
       </button>
+      <div role="status" className="text-xs leading-6 text-muted">
+        {prepared && (
+          <>
+            Email draft requested. If your email app didn’t open,{" "}
+            <a
+              className="underline underline-offset-4"
+              href={`mailto:${profile.email}`}
+            >
+              email me directly
+            </a>
+            . Your text is kept here so you can copy it.
+          </>
+        )}
+      </div>
     </form>
   );
 }

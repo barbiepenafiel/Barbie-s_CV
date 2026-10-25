@@ -1,97 +1,56 @@
 import { education } from "@/lib/content";
 import { SectionHeading } from "./SectionHeading";
-
 export function EducationSection() {
   return (
     <section
+      tabIndex={-1}
       id="education"
       aria-labelledby="education-heading"
-      className="flex min-h-screen flex-col border-t border-line px-6 pb-16 pt-16 sm:px-10"
+      className="section bg-surface"
     >
-      <h2 id="education-heading" className="sr-only">
-        Education
-      </h2>
-
-      <div className="mx-auto w-full max-w-7xl">
-        <SectionHeading index="01" title="Education" />
-
-        <div className="mt-10 flex flex-col gap-12">
-          {education.map((entry) => (
-            <div key={entry.school} className="grid gap-10 md:grid-cols-[1fr_1.1fr] md:gap-16">
-
-              {/* Left — school identity */}
-              <div className="flex flex-col gap-6">
-                <div className="rounded-sm border border-line bg-forest/5 px-8 py-8">
-                  <div className="flex flex-col gap-4">
-                    <div className="inline-flex w-fit items-center gap-2 rounded-full bg-accent/10 px-3 py-1">
-                      <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-                      <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-                        {entry.status}
-                      </span>
-                    </div>
-
-                    <div>
-                      <p className="text-2xl font-semibold leading-snug text-ink sm:text-3xl">
-                        {entry.school}
-                      </p>
-                      <p className="mt-1 text-sm font-medium text-accent">
-                        {entry.location}
-                      </p>
-                    </div>
-
-                    <p className="text-base font-medium text-ink/80">
-                      {entry.program}
-                    </p>
-
-                  </div>
-                </div>
-
-                <p className="text-sm leading-relaxed text-ink/70">
-                  {entry.description}
-                </p>
-
-                {/* Achievements */}
-                <div>
-                  <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-ink/50">
-                    Achievements
-                  </h3>
-                  <ul className="flex flex-col gap-2">
-                    {entry.achievements.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-3 text-sm text-ink/80"
-                      >
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {/* Right — coursework */}
-              <div className="flex flex-col gap-6">
-                <div>
-                  <h3 className="mb-4 text-xs font-semibold uppercase tracking-[0.25em] text-ink/50">
-                    Relevant Coursework
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {entry.coursework.map((course) => (
-                      <span
-                        key={course}
-                        className="rounded-sm border border-forest/20 bg-forest/5 px-3 py-1.5 text-sm font-medium text-ink transition-colors hover:bg-forest hover:text-cream cursor-default"
-                      >
-                        {course}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-              </div>
-
+      <div className="wrap">
+        <SectionHeading index="02" title="Education" id="education-heading" />
+        {education.map((entry) => (
+          <article
+            key={entry.school}
+            className="grid gap-8 md:grid-cols-[1.1fr_1fr] md:gap-16"
+          >
+            <div>
+              <p className="eyebrow mb-5 text-muted">{entry.status}</p>
+              <h3 className="max-w-md text-2xl font-medium leading-tight tracking-tight sm:text-3xl">
+                {entry.school}
+              </h3>
+              <p className="mt-4 text-base">{entry.program}</p>
+              <p className="mt-2 text-xs text-muted">{entry.location}</p>
+              <p className="mt-6 max-w-lg text-sm leading-7 text-muted">
+                {entry.description}
+              </p>
+              {entry.achievements.length > 0 && (
+                <ul className="mt-4 list-inside list-disc text-sm leading-7">
+                  {entry.achievements.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              )}
             </div>
-          ))}
-        </div>
+            <div className="border-l border-border pl-6 md:pl-10">
+              <h3 className="eyebrow mb-6">Relevant coursework</h3>
+              <ul className="grid gap-x-6 sm:grid-cols-2">
+                {entry.coursework.map((course, index) => (
+                  <li
+                    key={course}
+                    className="flex gap-3 border-t border-border py-4 text-sm"
+                  >
+                    <span className="text-xs text-muted" aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    {course}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );

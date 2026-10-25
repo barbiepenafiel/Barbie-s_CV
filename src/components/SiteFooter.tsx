@@ -1,14 +1,19 @@
 import { profile, site } from "@/lib/content";
-
+import { SocialLinks } from "./SocialLinks";
 export function SiteFooter() {
   return (
-    <footer className="border-t border-line px-6 py-8 sm:px-10">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 text-xs font-medium uppercase tracking-[0.2em] text-ink/40 sm:flex-row">
-        <p>
-          {profile.firstName} {profile.lastName} &copy; {site.year}
-        </p>
-        <a href="#profile" className="transition-colors hover:text-accent">
-          Back to top
+    <footer className="border-t border-border bg-foreground py-9 text-background">
+      <div className="wrap flex flex-col justify-between gap-6 sm:flex-row sm:items-center">
+        <div>
+          <p className="text-sm">
+            {profile.firstName} {profile.lastName}{" "}
+            <span className="ml-2 text-xs">© {site.year}</span>
+          </p>
+          <p className="mt-2 text-xs">{profile.role}</p>
+        </div>
+        <SocialLinks />
+        <a href="#profile" className="text-link">
+          Back to top <span aria-hidden="true">↑</span>
         </a>
       </div>
     </footer>
