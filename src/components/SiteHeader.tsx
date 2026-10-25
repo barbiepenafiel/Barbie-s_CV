@@ -101,7 +101,13 @@ export function SiteHeader() {
           {links.map((link) => navItem(link))}
         </nav>
         <a
-          href={`mailto:${profile.email}`}
+          href="#contact"
+          onClick={() => {
+            setOpen(false);
+            document
+              .getElementById("contact")
+              ?.focus({ preventScroll: true });
+          }}
           className="header-contact hidden min-h-11 items-center gap-3 text-xs sm:inline-flex"
         >
           Let’s talk <span aria-hidden="true">↗</span>
