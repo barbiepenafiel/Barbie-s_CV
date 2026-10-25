@@ -31,7 +31,20 @@
 
 These checks do not substitute for a full assistive-technology audit or real device testing. Empty projects and unverified achievements cannot truthfully satisfy a rubric that demands completed real entries.
 
-## Content still needed
+## Skills interaction update
+
+The local enhancement adds illustrated monochrome cards, selectable skill buttons with live descriptions, and numbered professional principles. Content describes the purpose of existing skills without introducing proficiency levels or work-history claims. The section remains server-rendered; only interactive cards are client components.
+
+Lint and production build pass. All 15 buttons were checked at 320, 375, 430, 768, 1024 and 1440 px, including keyboard selection and reduced-motion handling, with no browser errors or horizontal overflow. Publication results are reported in the chat and deployment dashboard.
+
+## Portfolio layout update
+
+- Dark portrait-led introduction with the original full-color image, overlapping focus panels, an illustrated About canvas, and alternating light/dark sections. No new work-history or project-count claims were added.
+- Responsive browser checks pass at 320, 375, 430, 768, 1024, 1440 and 1920 px, including navigation, images, keyboard focus, email preparation, reduced motion and readable server-rendered content. Lint and production build pass.
+- README now focuses on Barbie's personal profile, education, toolkit and contact information. Development and deployment instructions are preserved separately in `DEVELOPMENT.md`.
+- Layout and interactive skills updates have been reviewed locally. Publication results are reported in the chat and deployment dashboard.
+
+## Personal content still needed
 
 1. Real project names, descriptions, technologies, screenshots, repository URLs and optional live demos.
 2. Verified certificates, awards, workshops, organization involvement or academic achievements.
