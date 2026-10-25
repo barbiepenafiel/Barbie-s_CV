@@ -101,16 +101,13 @@ export function SiteHeader() {
           {links.map((link) => navItem(link))}
         </nav>
         <a
-          href="#contact"
-          onClick={() => {
-            setOpen(false);
-            document
-              .getElementById("contact")
-              ?.focus({ preventScroll: true });
-          }}
+          href={`mailto:${profile.email}?subject=${encodeURIComponent("Let’s work together")}`}
+          onClick={() => setOpen(false)}
+          aria-label="Let’s talk — open your email app"
           className="header-contact hidden min-h-11 items-center gap-3 text-xs sm:inline-flex"
         >
           Let’s talk <span aria-hidden="true">↗</span>
+          <span className="sr-only"> (opens your default email app)</span>
         </a>
         <button
           ref={toggle}
