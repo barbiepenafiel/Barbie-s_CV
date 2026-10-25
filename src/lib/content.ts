@@ -3,6 +3,7 @@
 
 export const site = {
   year: new Date().getFullYear(),
+  url: "https://barbiepenafiel-cv.vercel.app",
 };
 
 export const profile = {
@@ -12,8 +13,13 @@ export const profile = {
   role: "Web Designer · Creative Developer",
   // Short line shown in the top header, left side.
   tagline: "Building clean, purposeful web experiences.",
-  // Set to a short paragraph (2-3 sentences) to replace the placeholder below.
-  introduction: "I am a web developer and designer with experience creating engaging digital experiences and compelling visual content. I combine clean code, thoughtful design, and visual storytelling to bring ideas to life. My work spans web development, UI/UX design, portfolio websites, brochures, posters, and branding materials. By blending technical expertise with creative design, I deliver cohesive, user-focused solutions that reflect each brand's identity.",
+  introduction:
+    "I bring together thoughtful design and clean code to create purposeful digital experiences. From the first wireframe to the final responsive interface, I care about the details that make the web feel intuitive.",
+  about:
+    "My work brings web development, UI/UX, and visual storytelling together. I enjoy translating ideas into clear interfaces and cohesive visual identities, including portfolio websites, brochures, posters, and branding materials.",
+  objective:
+    "To combine web development and creative design in building responsive, accessible interfaces that put people first — while continuing to grow through thoughtful collaboration and meaningful digital projects.",
+  interests: ["Web development", "UI/UX design", "Visual communication"],
   location: "Panabo City, Davao del Norte, Philippines",
   email: "barbiepenafiel2019@gmail.com",
   linkedin: "https://www.linkedin.com/in/barbie-penafiel-675765376/",
@@ -56,11 +62,8 @@ export const education: EducationEntry[] = [
       "Network Fundamentals",
       "Capstone Project",
     ],
-    achievements: [
-      "Dean's List Candidate",
-      "Active member of the IT Students Society",
-      "Participated in campus web design projects",
-    ],
+    // TODO: Add verified academic achievements and organization involvement.
+    achievements: [],
   },
 ];
 
@@ -72,11 +75,24 @@ export type SkillCategory = {
 export const skillCategories: SkillCategory[] = [
   {
     label: "Frontend Development",
-    skills: ["HTML & CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS"],
+    skills: [
+      "HTML & CSS",
+      "JavaScript",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+    ],
   },
   {
     label: "Design",
-    skills: ["Figma", "UI/UX Design", "Responsive Design", "Wireframing", "Prototyping"],
+    skills: [
+      "Figma",
+      "UI/UX Design",
+      "Responsive Design",
+      "Wireframing",
+      "Prototyping",
+    ],
   },
   {
     label: "Tools & Workflow",
@@ -84,8 +100,12 @@ export const skillCategories: SkillCategory[] = [
   },
 ];
 
-// Flat list kept for backwards-compat (unused by the redesigned component)
-export const skills: string[] = skillCategories.flatMap((c) => c.skills);
+// Supported by the profile's design focus and collaborative coursework.
+export const professionalSkills = [
+  "Creative thinking",
+  "Attention to detail",
+  "Collaboration",
+];
 
 export type ExperienceEntry = {
   title: string;
@@ -99,26 +119,68 @@ export type ExperienceEntry = {
 
 export const experience: ExperienceEntry[] = [
   {
-    title: "Freelance Web Designer",
-    type: "Freelance",
-    period: "2023 – Present",
-    location: "Remote / Panabo City, Philippines",
+    title: "Creative Web Projects",
+    type: "Independent practice",
+    period: "Ongoing",
+    location: "Panabo City, Philippines",
     summary:
-      "Designed and developed responsive, user-centered websites for clients across various industries, handling projects end-to-end from initial concept through deployment.",
+      "Exploring the relationship between design and development through responsive interfaces, visual communication, and personal web projects.",
     highlights: [
-      "Built and delivered multiple client websites using React and Next.js",
-      "Created high-fidelity UI mockups and interactive prototypes in Figma",
-      "Implemented pixel-perfect, mobile-first layouts with Tailwind CSS",
-      "Collaborated directly with clients to gather requirements and iterate on feedback",
-      "Optimized sites for performance, accessibility, and SEO best practices",
+      "Interface design, wireframing, and interactive prototyping in Figma",
+      "Responsive web development with React, Next.js, and Tailwind CSS",
+      "Visual design across web and print materials",
     ],
     stack: ["React", "Next.js", "Tailwind CSS", "Figma", "TypeScript"],
   },
 ];
 
 export const navLinks = [
-  { label: "Profile", href: "#profile" },
+  { label: "Home", href: "#profile" },
+  { label: "About", href: "#about" },
   { label: "Education", href: "#education" },
-  { label: "Skills & Experience", href: "#skills-experience" },
+  { label: "Skills", href: "#skills" },
+  { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
+  // Achievements navigation is appended only when verified entries exist.
   { label: "Contact", href: "#contact" },
 ];
+
+export type SocialLink = {
+  label: string;
+  href: string;
+  kind: "github" | "linkedin";
+};
+export const socialLinks: SocialLink[] = [
+  { label: "GitHub", href: profile.github, kind: "github" },
+  { label: "LinkedIn", href: profile.linkedin, kind: "linkedin" },
+];
+
+export type Project = {
+  name: string;
+  description: string;
+  technologies: string[];
+  preview?: { src: string; alt: string };
+  repository?: string;
+  demo?: string;
+};
+// TODO: Add real project descriptions, local previews, repository and optional live URLs.
+export const projects: Project[] = [];
+
+export type Achievement = {
+  title: string;
+  category:
+    | "Certificate"
+    | "Award"
+    | "Seminar"
+    | "Training"
+    | "Workshop"
+    | "Academic"
+    | "Organization";
+  issuer: string;
+  date: string;
+  url?: string;
+};
+// TODO: Add certificates/awards only after verification. Empty sections stay hidden.
+export const achievements: Achievement[] = [];
+// TODO: Confirm freelance dates and client work before publishing employment claims.
+// TODO: Supply a real resume PDF before adding a Download CV action.
