@@ -14,13 +14,12 @@ export function ProfileSection() {
       <div className="wrap hero-layout">
         <div className="hero-enter hero-copy">
           <p className="eyebrow hero-welcome">
-            <span aria-hidden="true" />
-            Hello, I’m
+            <span aria-hidden="true" />A little creativity. A lot of intention.
           </p>
           <h1 id="profile-heading" className="hero-name">
             {profile.firstName}
             <br />
-            {profile.lastName}
+            <span className="hero-surname">{profile.lastName}</span>
             <span className="hero-name-dot">.</span>
           </h1>
           <p className="hero-profession">{profile.role}</p>
@@ -40,11 +39,30 @@ export function ProfileSection() {
           </div>
         </div>
         <figure className="hero-enter-delayed hero-portrait">
-          <div className="hero-portrait-grid" aria-hidden="true" />
-          <span className="hero-outline hero-outline-one" aria-hidden="true" />
-          <span className="hero-outline hero-outline-two" aria-hidden="true" />
-          <span className="hero-portrait-word" aria-hidden="true">
-            CREATE.
+          <div className="hero-orbit" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
+          <span className="hero-portrait-label" aria-hidden="true">
+            Design meets development
+          </span>
+          <svg
+            className="hero-spark"
+            viewBox="0 0 80 80"
+            fill="none"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M40 0v80M0 40h80M12 12l56 56M12 68l56-56"
+              strokeWidth="1.2"
+            />
+          </svg>
+          <span className="hero-craft-label" aria-hidden="true">
+            Ideas into
+            <br />
+            <strong>experiences.</strong>
           </span>
           <Image
             src={profile.portrait.src}
@@ -67,9 +85,26 @@ export function ProfileSection() {
         </figure>
       </div>
       <div className="wrap hero-bottom">
-        <p>{profile.location}</p>
-        <a href="#about" className="text-link">
-          Discover my approach <span aria-hidden="true">↓</span>
+        <div>
+          <p className="eyebrow mb-2 hero-location-label">
+            Based in the Philippines
+          </p>
+          <p>{profile.location}</p>
+        </div>
+        <p className="hero-signature" aria-hidden="true">
+          Thoughtfully designed.
+          <br />
+          Carefully developed.
+        </p>
+        <a href="#about" className="hero-scroll-link" aria-label="Discover my approach">
+          <span>
+            Discover
+            <br />
+            my approach
+          </span>
+          <span className="hero-scroll-arrow" aria-hidden="true">
+            ↓
+          </span>
         </a>
       </div>
     </section>
