@@ -9,14 +9,20 @@ export function EducationSection() {
       className="section bg-surface"
     >
       <div className="wrap">
-        <SectionHeading index="02" title="Education" id="education-heading" />
+        <SectionHeading
+          index="05"
+          title="A foundation for what’s next."
+          id="education-heading"
+        />
         {education.map((entry) => (
           <article
             key={entry.school}
             className="grid gap-8 md:grid-cols-[1.1fr_1fr] md:gap-16"
           >
             <div>
-              <p className="eyebrow mb-5 text-muted">{entry.status}</p>
+              <p className="eyebrow mb-5 text-muted">
+                {entry.status} · Expected {entry.year}
+              </p>
               <h3 className="max-w-md text-2xl font-medium leading-tight tracking-tight sm:text-3xl">
                 {entry.school}
               </h3>

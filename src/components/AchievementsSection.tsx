@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { achievements } from "@/lib/content";
 import { SectionHeading } from "./SectionHeading";
 export function AchievementsSection() {
@@ -7,34 +8,47 @@ export function AchievementsSection() {
       tabIndex={-1}
       id="achievements"
       aria-labelledby="achievements-heading"
-      className="section"
+      className="section achievements-section"
     >
       <div className="wrap">
         <SectionHeading
-          index="06"
-          title="Achievements & certifications"
+          index="07"
+          title="Always learning. Always growing."
           id="achievements-heading"
         />
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="credential-grid">
           {achievements.map((item) => (
-            <article key={`${item.title}-${item.date}`} className="skill-card">
-              <p className="eyebrow mb-4 text-muted">
-                {item.category} / {item.date}
-              </p>
-              <h3 className="text-xl font-medium">{item.title}</h3>
-              <p className="mt-3 text-sm text-muted">{item.issuer}</p>
-              {item.url && (
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-link mt-4"
-                >
-                  View credential
-                  <span className="sr-only"> (opens in a new tab)</span>
-                  <span aria-hidden="true">↗</span>
-                </a>
+            <article key={item.title} className="credential-card">
+              {item.preview && (
+                <div className="credential-preview">
+                  <Image
+                    src={item.preview.src}
+                    alt={item.preview.alt}
+                    fill
+                    sizes="(min-width: 1024px) 520px, 90vw"
+                    className="object-contain"
+                  />
+                </div>
               )}
+              <div className="credential-copy">
+                <p className="eyebrow">
+                  {item.category} · {item.date}
+                </p>
+                <h3>{item.title}</h3>
+                <p>{item.issuer}</p>
+                <p>{item.description}</p>
+                {item.url && (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-link"
+                  >
+                    View credential <span aria-hidden="true">↗</span>
+                    <span className="sr-only"> (opens in a new tab)</span>
+                  </a>
+                )}
+              </div>
             </article>
           ))}
         </div>

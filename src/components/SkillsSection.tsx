@@ -16,7 +16,11 @@ export function SkillsSection() {
       className="section"
     >
       <div className="wrap">
-        <SectionHeading index="03" title="Skills & tools" id="skills-heading" />
+        <SectionHeading
+          index="02"
+          title="A toolkit for thoughtful work."
+          id="skills-heading"
+        />
         <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
           <p className="max-w-lg text-sm leading-7 text-muted">
             A considered toolkit for turning ideas into clear, responsive
@@ -26,7 +30,7 @@ export function SkillsSection() {
             <span aria-hidden="true">↳ </span>Explore the toolkit
           </p>
         </div>
-        <div className="grid gap-4 lg:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {skillCategories.map((category, index) => (
             <SkillCard
               key={category.id}

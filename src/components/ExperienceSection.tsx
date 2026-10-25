@@ -7,11 +7,11 @@ export function ExperienceSection() {
       tabIndex={-1}
       id="experience"
       aria-labelledby="experience-heading"
-      className="section bg-surface"
+      className="section experience-section"
     >
       <div className="wrap">
         <SectionHeading
-          index="05"
+          index="06"
           title="Experience & practice"
           id="experience-heading"
         />

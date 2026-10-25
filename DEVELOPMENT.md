@@ -1,75 +1,19 @@
-# Barbie Peñafiel — Personal CV Website
+# Portfolio development
 
-## Project Overview
+This Next.js project powers Barbie Peñafiel’s personal portfolio. The public README contains her profile; implementation details live here.
 
-A personal portfolio and curriculum vitae for **Barbie Peñafiel — Web Designer · Creative Developer**, based in Panabo City, Davao del Norte, Philippines. This enhancement preserves the existing Next.js project, portrait, personal details, and educational background while introducing an editorial black-and-white visual identity.
+## Local setup
 
-## Features
-
-- Responsive hero with the original optimized portrait, professional introduction, location, and purposeful CTAs.
-- About section with career objective, interests, and verified contact/social details.
-- Education and relevant coursework; no unverified academic honors.
-- Interactive skill cards grouped by frontend development, design, and workflow: select a skill to read its purpose, with keyboard/touch support, monochrome illustrations, and reduced-motion handling. No arbitrary percentages.
-- Dedicated project cards supporting previews, technologies, repository links, and optional demos. An honest empty state appears until real entries are supplied.
-- Independent creative practice section; unconfirmed client/employer claims are excluded.
-- Typed achievement/certification entries, hidden (including navigation) when empty.
-- Sticky navigation, active section indication, mobile disclosure menu with Escape handling and safe keyboard focus.
-- Lightweight scroll reveals, card/arrow interactions, smooth scrolling, and reduced-motion support. Content remains readable with JavaScript disabled.
-- Accessible labels, semantic headings, skip link, visible focus, and safe external links.
-- Contact form opens a prefilled email draft. **It does not send messages**, claim delivery, clear the visitor’s text, or require a backend. An email application must be configured.
-- SEO and social metadata with the confirmed production domain.
-
-## Technologies Used
-
-- Next.js 16 (App Router), React 19, TypeScript
-- Tailwind CSS 4, native CSS transitions and IntersectionObserver
-- Next.js Image and local font optimization (bundled Inter, with a system serif display face)
-- ESLint, npm, Git / GitHub, Vercel
-
-## Project Structure
-
-```text
-public/images/              Original portrait assets
-src/app/
-  globals.css               Grayscale tokens, layout utilities, interactions
-  layout.tsx                Fonts, skip link, metadata
-  page.tsx                  Server-rendered page composition
-src/components/
-  SiteHeader.tsx            Responsive navigation and active section state
-  ProfileSection.tsx        Hero / portrait
-  AboutSection.tsx          Profile and career objective
-  EducationSection.tsx      Education and coursework
-  SkillsSection.tsx         Categorized skill cards
-  SkillCard.tsx             Selectable skills and accessible detail panels
-  ProjectsSection.tsx       Project cards / honest empty state
-  ExperienceSection.tsx     Independent creative practice
-  AchievementsSection.tsx   Verified entries only, hidden when empty
-  ContactSection.tsx        Contact details
-  ContactForm.tsx           Email draft workflow
-  ScrollReveals.tsx         Progressive enhancement for scroll animation
-  SectionHeading.tsx        Consistent section headings
-  SocialLinks.tsx           Centralized social presentation
-  SiteFooter.tsx            Footer and back-to-top action
-  icons.tsx                 Local SVG icons
-src/lib/content.ts          Personal content and typed data
-```
-
-## Local Development
-
-Use Node.js 20.9 or newer (a supported LTS release is recommended).
+Use Node.js 20.9 or newer; production uses Node.js 24.x.
 
 ```bash
-git clone https://github.com/barbiepenafiel/Barbie-s_CV.git
-cd Barbie-s_CV
 npm install
 npm run dev
 ```
 
-Open the development URL printed by Next.js (normally http://localhost:3000).
+The project selects the official npm registry in `.npmrc`. No application environment variables are required. The Vercel CLI may create an ignored local authentication file; never commit it.
 
-If your machine has an incorrect npm registry configured, use `npm install --registry=https://registry.npmjs.org`. The lockfile uses the official registry.
-
-## Build Instructions
+## Validation and production
 
 ```bash
 npm run lint
@@ -77,47 +21,37 @@ npm run build
 npm run start
 ```
 
-Next.js builds include TypeScript validation. Inter is bundled locally under `src/app/fonts/` with its SIL Open Font License; builds do not fetch Google Fonts. No application secrets or environment variables are required.
+Next.js checks TypeScript during the production build. Inter is bundled locally with its Open Font License; editorial headings use a system serif. Builds do not download fonts.
 
-## Editing Content
+## Structure
 
-Edit `src/lib/content.ts`; components consume this shared source. Preserve the distinction between professional branding and the education program.
+- `src/lib/content.ts`: personal details, skills, verified projects, process, education, experience, and certificates.
+- `src/components/`: reusable page sections; interactive navigation, skill cards, contact draft form and project gallery.
+- `src/app/`: metadata, page composition and shared design tokens/styles.
+- `public/images/`: original full-color portrait.
+- `public/projects/`: optimized WebP previews from the owner’s supplied artwork.
+- `public/certificates/`: certificate preview.
+- `public/documents/`: original supplied résumé and Cisco course-completion PDF.
+- `artifacts/`: ignored original downloads, visual checks and local publication state.
 
-- Add real projects to `projects`, with accurate descriptions, technologies, and real links. Put local preview files under `public/images/`; use paths beginning with `/images/`. Remote image sources require a narrowly scoped Next.js image configuration.
-- Add only verified entries to `achievements`; the section and navigation appear automatically.
-- Academic honors, organization membership, freelance dates, and client work need confirmation before publication.
-- Add a real résumé PDF before implementing a Download CV action. No PDF or fake download is supplied.
-- Existing coursework and enrollment status are retained. Confirm the current status and expected graduation date before adding a graduation label.
-- Confirm professional strengths before adding further skill claims.
+## Editing content
 
-## Deployment
+Keep personal content in `src/lib/content.ts`. New projects need an id, name, category, accurate description, tags, preview, gallery images, and verified source URL. Repository and live demo links are optional; add them only when actual URLs exist. Projects without working code links can still show their supplied visual work honestly.
 
-Existing Vercel project: [barbiepenafiel-cv](https://vercel.com/barbiepenafiels-projects/barbiepenafiel-cv).
+The gallery filters real project categories. Its native modal supports keyboard focus, Escape, image navigation, source links and scroll locking. Skill buttons expose a selected state and announce their explanation. The contact form prepares a mailto draft; sending happens in the visitor’s email app. The résumé link downloads the original file.
 
-Import/connect the existing GitHub repository in this project, select the Next.js framework preset, and use the repository root. Install: `npm install`; build: `npm run build`; output: Next.js default. No custom server or environment variables are needed. Deploy the reviewed branch as a preview or promote a successful deployment to production. Do not create a duplicate Vercel project.
+Only add verified achievements. The Cisco document is course completion and must not be described as passing the professional CCNA exam. Displayed PDF files are supplied originals; do not silently rewrite them. The downloadable résumé retains its original wording and original portfolio URL.
 
-See `QUALITY_CHECK.md` for verification results and remaining content needs. Deployment is only confirmed after the live domain has been checked.
+Use Next.js Image with appropriate sizes. Keep large original artwork out of production when optimized previews suffice. Small gallery covers load eagerly to avoid blank results during filtering; modal artwork is requested when its viewer opens. Other below-the-fold previews remain lazy. Preserve full-color project artwork and the owner’s portrait. Shared cream, taupe and warm dark tokens define the visual system. Respect reduced-motion preferences.
 
-## Student Name
+## Publishing
 
-**Barbie Peñafiel**
+Repository: https://github.com/barbiepenafiel/Barbie-s_CV
 
-Davao del Norte State College · BSIT 4C · 4th Year
+Production: https://barbiepenafiel-cv.vercel.app/
 
-IT415 — Application Development and Emerging Technologies
+Existing Vercel project: `barbiepenafiels-projects/barbiepenafiel-cv`. Use the repository root and Next.js preset. Do not create a duplicate project.
 
-## GitHub Repository
+Verify repository-local author and committer before committing: Barbie Peñafiel, `barbiepenafiel2019@gmail.com`. Fetch remote changes, validate, make meaningful commits and use normal fast-forward pushes to main. Do not force-push or rewrite history without new explicit authorization.
 
-[barbiepenafiel/Barbie-s_CV](https://github.com/barbiepenafiel/Barbie-s_CV)
-
-## Live Vercel Website
-
-[https://barbiepenafiel-cv.vercel.app/](https://barbiepenafiel-cv.vercel.app/)
-
-## Suggested Meaningful Commits
-
-1. `feat: introduce monochrome visual system and editorial profile`
-2. `feat: add responsive navigation and accessible interactions`
-3. `feat: add portfolio sections and verified content schemas`
-4. `fix: clarify email workflow and remove unverified claims`
-5. `docs: document content editing and Vercel deployment`
+The owner has authorized publishing completed changes automatically. A recurring check is attached to this chat. It must skip active work, exclude secrets/generated files, publish only after validation, and verify production before recording success in ignored `artifacts/publication-state.json`.

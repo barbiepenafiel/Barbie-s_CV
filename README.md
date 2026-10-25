@@ -18,7 +18,7 @@ I aim to combine web development and creative design to build responsive, access
 
 **Davao del Norte State College**
 
-Bachelor of Science in Information Technology · Currently enrolled
+Bachelor of Science in Information Technology · Currently enrolled · Expected graduation: 2027
 
 My coursework includes Web Development, Data Structures & Algorithms, Database Management, Object-Oriented Programming, Systems Analysis & Design, Human-Computer Interaction, Network Fundamentals, and Capstone Project.
 
@@ -33,6 +33,8 @@ My coursework includes Web Development, Data Structures & Algorithms, Database M
 | Next.js              | Prototyping       |                    |
 | Tailwind CSS         |                   |                    |
 
+My creative tools also include **Canva** and **Adobe Photoshop**, alongside branding, social media graphics, and presentation design. I also work with **MySQL** for relational data.
+
 ## How I Work
 
 - **Creative thinking:** Explore possibilities and give ideas a clear visual direction.
@@ -43,7 +45,25 @@ My coursework includes Web Development, Data Structures & Algorithms, Database M
 
 I explore responsive interfaces, visual communication, and personal web projects, with a focus on interface design, wireframing, prototyping, and visual design for web and print.
 
-Selected projects will be added to my portfolio as they are ready to share. You can follow my work on [GitHub](https://github.com/barbiepenafiel).
+## Selected Work
+
+- **Campedals:** A bike rental and subscription app interface, with coordinated promotional brochures and a campus mobility poster.
+- **DSP Publishing:** A Western-themed publishing website concept.
+- **Fashion Storefront:** An e-commerce interface study with product grids and editorial imagery.
+- **DSP Celebration Posters:** Portrait-led celebration and congratulations layouts.
+- **Campus Information Brochure:** A coordinated print layout for campus information and featured products.
+- **Tempura Brochure:** A food brochure combining product photography and clear information.
+
+Explore the artwork in my [portfolio gallery](https://barbiepenafiel-cv.vercel.app/#projects).
+
+## Continued Learning
+
+- **CCNA: Switching, Routing, and Wireless Essentials** — Cisco Networking Academy through Davao del Norte State College, completed 11 November 2025. Course completion; separate from the professional CCNA certification exam.
+- **AI for Capstone Innovation** — Advanced Seminar Series for BSIT Fourth-Year Students, Davao del Norte State College, completed 29 September 2026.
+
+## My Résumé
+
+[Download my résumé (PDF)](https://barbiepenafiel-cv.vercel.app/documents/barbie-penafiel-resume.pdf)
 
 ## Let’s Connect
 

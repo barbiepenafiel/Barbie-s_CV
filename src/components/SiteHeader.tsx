@@ -82,20 +82,27 @@ export function SiteHeader() {
         <a
           href="#profile"
           aria-label={`${profile.firstName} ${profile.lastName}, home`}
-          className="display text-3xl"
+          className="brand-link"
         >
-          {profile.initials}
-          <span className="font-sans text-base">.</span>
+          <span className="brand-mark" aria-hidden="true">
+            {profile.initials}
+          </span>
+          <span className="brand-copy">
+            <strong>
+              {profile.firstName} {profile.lastName}
+            </strong>
+            <small>Design & development</small>
+          </span>
         </a>
         <nav
           aria-label="Main navigation"
-          className="hidden items-center gap-6 lg:flex"
+          className="hidden items-center gap-4 lg:flex"
         >
           {links.map((link) => navItem(link))}
         </nav>
         <a
           href={`mailto:${profile.email}`}
-          className="hidden min-h-11 items-center gap-3 text-xs sm:inline-flex"
+          className="header-contact hidden min-h-11 items-center gap-3 text-xs sm:inline-flex"
         >
           Let’s talk <span aria-hidden="true">↗</span>
         </a>

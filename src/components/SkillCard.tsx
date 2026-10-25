@@ -29,7 +29,7 @@ function SkillIllustration({ kind }: { kind: SkillCategory["id"] }) {
             strokeWidth="1.5"
           />
         </>
-      ) : kind === "design" ? (
+      ) : kind === "design" || kind === "visual" ? (
         <>
           <path strokeDasharray="3 4" d="M13 50h134M80 4v92" />
           <rect

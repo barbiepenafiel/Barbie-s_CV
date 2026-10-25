@@ -2,19 +2,38 @@ import { profile, site } from "@/lib/content";
 import { SocialLinks } from "./SocialLinks";
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border bg-foreground py-9 text-background">
-      <div className="wrap flex flex-col justify-between gap-6 sm:flex-row sm:items-center">
-        <div>
-          <p className="text-sm">
-            {profile.firstName} {profile.lastName}{" "}
-            <span className="ml-2 text-xs">© {site.year}</span>
-          </p>
-          <p className="mt-2 text-xs">{profile.role}</p>
+    <footer className="site-footer">
+      <div className="wrap">
+        <div className="footer-main">
+          <div>
+            <a href="#profile" className="footer-brand">
+              {profile.firstName} {profile.lastName}
+            </a>
+            <p>{profile.role}</p>
+            <p>Thoughtful design. Purposeful development.</p>
+          </div>
+          <div>
+            <p className="eyebrow">Explore</p>
+            <a href="#about">About me</a>
+            <a href="#projects">Selected work</a>
+            <a href="#process">My process</a>
+          </div>
+          <div>
+            <p className="eyebrow">Let’s connect</p>
+            <a className="footer-email" href={`mailto:${profile.email}`}>
+              {profile.email}
+            </a>
+            <SocialLinks />
+          </div>
         </div>
-        <SocialLinks />
-        <a href="#profile" className="text-link">
-          Back to top <span aria-hidden="true">↑</span>
-        </a>
+        <div className="footer-bottom">
+          <p>
+            © {site.year} {profile.firstName} {profile.lastName}
+          </p>
+          <a href="#profile">
+            Back to top <span aria-hidden="true">↑</span>
+          </a>
+        </div>
       </div>
     </footer>
   );

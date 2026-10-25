@@ -13,98 +13,68 @@ export function ProfileSection() {
     >
       <div className="wrap hero-layout">
         <div className="hero-enter hero-copy">
-          <p className="eyebrow hero-welcome">
-            <span aria-hidden="true" />A little creativity. A lot of intention.
-          </p>
+          <p className="hero-role">{profile.role}</p>
           <h1 id="profile-heading" className="hero-name">
             {profile.firstName}
             <br />
-            <span className="hero-surname">{profile.lastName}</span>
-            <span className="hero-name-dot">.</span>
+            <em>{profile.lastName}.</em>
           </h1>
-          <p className="hero-profession">{profile.role}</p>
-          <p className="hero-introduction">{profile.introduction}</p>
-          <div className="mt-8 flex flex-wrap gap-3">
+          <p className="hero-introduction">{profile.heroIntroduction}</p>
+          <div className="hero-actions">
             <a href="#projects" className="button button-primary">
               View My Work
               <ArrowUpRightIcon />
             </a>
-            <a href="#contact" className="button hero-secondary">
-              Contact Me
-              <ArrowUpRightIcon />
+            <a href={profile.resume} download className="button button-outline">
+              Download CV<span aria-hidden="true">↓</span>
+              <span className="sr-only"> (PDF)</span>
             </a>
           </div>
-          <div className="mt-6">
-            <SocialLinks />
+          <SocialLinks />
+          <div className="hero-details">
+            <span className="hero-detail-dot" aria-hidden="true" />
+            <p>{profile.location}</p>
           </div>
         </div>
         <figure className="hero-enter-delayed hero-portrait">
-          <div className="hero-orbit" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </div>
-          <span className="hero-portrait-label" aria-hidden="true">
-            Design meets development
-          </span>
-          <svg
-            className="hero-spark"
-            viewBox="0 0 80 80"
-            fill="none"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              d="M40 0v80M0 40h80M12 12l56 56M12 68l56-56"
-              strokeWidth="1.2"
-            />
-          </svg>
-          <span className="hero-craft-label" aria-hidden="true">
-            Ideas into
-            <br />
-            <strong>experiences.</strong>
+          <div className="portrait-arch" aria-hidden="true" />
+          <span className="portrait-caption-top" aria-hidden="true">
+            A balance of logic & creativity
           </span>
           <Image
             src={profile.portrait.src}
             alt={profile.portrait.alt}
             fill
-            sizes="(min-width: 1280px) 560px, (min-width: 768px) 48vw, 90vw"
+            sizes="(min-width: 1280px) 580px, (min-width: 768px) 48vw, 92vw"
             className="hero-portrait-image"
             preload
           />
           <figcaption className="hero-photo-note">
-            <span className="hero-note-mark" aria-hidden="true">
-              ✳
+            <span className="signature-mark" aria-hidden="true">
+              BP
             </span>
             <span>
-              Creative by nature.
-              <br />
-              <strong>Thoughtful by design.</strong>
+              {profile.firstName} {profile.lastName}
+              <small>
+                Design with purpose.
+                <br />
+                Develop with care.
+              </small>
             </span>
           </figcaption>
         </figure>
       </div>
-      <div className="wrap hero-bottom">
-        <div>
-          <p className="eyebrow mb-2 hero-location-label">
-            Based in the Philippines
-          </p>
-          <p>{profile.location}</p>
-        </div>
-        <p className="hero-signature" aria-hidden="true">
-          Thoughtfully designed.
-          <br />
-          Carefully developed.
-        </p>
-        <a href="#about" className="hero-scroll-link" aria-label="Discover my approach">
-          <span>
-            Discover
-            <br />
-            my approach
-          </span>
-          <span className="hero-scroll-arrow" aria-hidden="true">
-            ↓
-          </span>
+      <div className="wrap hero-disciplines">
+        <span className="eyebrow">At the intersection of</span>
+        {profile.interests.map((item) => (
+          <span key={item}>{item}</span>
+        ))}
+        <a
+          href="#about"
+          aria-label="Discover my approach"
+          className="hero-scroll-link"
+        >
+          Discover my approach <span aria-hidden="true">↓</span>
         </a>
       </div>
     </section>
