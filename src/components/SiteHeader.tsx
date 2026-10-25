@@ -76,7 +76,7 @@ export function SiteHeader() {
   return (
     <header
       ref={header}
-      className={`sticky top-0 z-40 border-b border-border bg-background transition-shadow ${scrolled ? "shadow-sm" : ""}`}
+      className={`site-header sticky top-0 z-40 border-b border-border bg-background transition-shadow ${scrolled ? "shadow-sm" : ""}`}
     >
       <div className="wrap flex min-h-20 items-center justify-between gap-6">
         <a

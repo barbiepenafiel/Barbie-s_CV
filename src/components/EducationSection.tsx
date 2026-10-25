@@ -35,7 +35,7 @@ export function EducationSection() {
             </div>
             <div className="border-l border-border pl-6 md:pl-10">
               <h3 className="eyebrow mb-6">Relevant coursework</h3>
-              <ul className="grid gap-x-6 sm:grid-cols-2">
+              <ul className="grid gap-x-6 lg:grid-cols-2">
                 {entry.coursework.map((course, index) => (
                   <li
                     key={course}

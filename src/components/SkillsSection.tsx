@@ -1,5 +1,12 @@
-import { professionalSkills, skillCategories } from "@/lib/content";
+import {
+  professionalSkills,
+  professionalSkillDescriptions,
+  skillCategories,
+  skillDescriptions,
+} from "@/lib/content";
 import { SectionHeading } from "./SectionHeading";
+import { SkillCard } from "./SkillCard";
+
 export function SkillsSection() {
   return (
     <section
@@ -10,38 +17,44 @@ export function SkillsSection() {
     >
       <div className="wrap">
         <SectionHeading index="03" title="Skills & tools" id="skills-heading" />
-        <p className="mb-8 max-w-lg text-sm leading-7 text-muted">
-          A considered toolkit for turning ideas into clear, responsive digital
-          experiences.
-        </p>
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
+          <p className="max-w-lg text-sm leading-7 text-muted">
+            A considered toolkit for turning ideas into clear, responsive
+            digital experiences.
+          </p>
+          <p className="eyebrow text-muted">
+            <span aria-hidden="true">↳ </span>Explore the toolkit
+          </p>
+        </div>
+        <div className="grid gap-4 lg:grid-cols-3">
           {skillCategories.map((category, index) => (
-            <article data-reveal key={category.label} className="skill-card">
-              <span
-                className="mb-8 block font-mono text-sm text-muted"
-                aria-hidden="true"
-              >
-                {["</>", "◇", "↗"][index]}
-              </span>
-              <h3 className="mb-5 text-lg font-medium tracking-tight">
-                {category.label}
-              </h3>
-              <ul className="flex flex-wrap gap-2">
-                {category.skills.map((skill) => (
-                  <li className="tag" key={skill}>
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </article>
+            <SkillCard
+              key={category.id}
+              category={category}
+              index={index}
+              descriptions={Object.fromEntries(
+                category.skills.map((skill) => [
+                  skill,
+                  skillDescriptions[skill],
+                ]),
+              )}
+            />
           ))}
         </div>
-        <div className="mt-8 flex flex-wrap items-center gap-4 border-t border-border pt-6">
-          <h3 className="eyebrow mr-2 text-muted">How I work</h3>
-          <ul className="flex flex-wrap gap-2">
-            {professionalSkills.map((skill) => (
-              <li key={skill} className="tag">
-                {skill}
+        <div className="mt-10 border-t border-border pt-8">
+          <h3 className="eyebrow mb-6 text-muted">How I work</h3>
+          <ul className="grid gap-6 md:grid-cols-3">
+            {professionalSkills.map((skill, index) => (
+              <li key={skill} className="work-principle">
+                <span aria-hidden="true" className="work-principle-index">
+                  0{index + 1}
+                </span>
+                <div>
+                  <h4 className="mb-2 text-sm font-medium">{skill}</h4>
+                  <p className="max-w-xs text-xs leading-6 text-muted">
+                    {professionalSkillDescriptions[skill]}
+                  </p>
+                </div>
               </li>
             ))}
           </ul>

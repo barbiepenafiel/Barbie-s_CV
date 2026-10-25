@@ -8,7 +8,7 @@ export function ProjectsSection() {
       tabIndex={-1}
       id="projects"
       aria-labelledby="projects-heading"
-      className="section"
+      className="section projects-section"
     >
       <div className="wrap">
         <SectionHeading
@@ -82,7 +82,7 @@ export function ProjectsSection() {
             ))}
           </div>
         ) : (
-          <div className="grid gap-8 border border-border bg-surface p-7 sm:p-12 md:grid-cols-[1fr_1.2fr]">
+          <div className="project-empty grid gap-8 border border-border bg-surface p-7 sm:p-12 md:grid-cols-[1fr_1.2fr]">
             <div>
               <p className="eyebrow text-muted">A space for considered work</p>
               <p className="display mt-6 text-4xl leading-tight sm:text-5xl">

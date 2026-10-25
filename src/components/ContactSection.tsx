@@ -9,7 +9,7 @@ export function ContactSection() {
       tabIndex={-1}
       id="contact"
       aria-labelledby="contact-heading"
-      className="section"
+      className="section contact-section"
     >
       <div className="wrap">
         <SectionHeading

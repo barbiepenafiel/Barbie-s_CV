@@ -68,12 +68,16 @@ export const education: EducationEntry[] = [
 ];
 
 export type SkillCategory = {
+  id: "frontend" | "design" | "workflow";
+  caption: string;
   label: string;
   skills: string[];
 };
 
 export const skillCategories: SkillCategory[] = [
   {
+    id: "frontend",
+    caption: "Build the experience",
     label: "Frontend Development",
     skills: [
       "HTML & CSS",
@@ -85,6 +89,8 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
+    id: "design",
+    caption: "Shape the idea",
     label: "Design",
     skills: [
       "Figma",
@@ -95,10 +101,54 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
+    id: "workflow",
+    caption: "Connect the process",
     label: "Tools & Workflow",
     skills: ["Git & GitHub", "VS Code", "Vercel", "npm"],
   },
 ];
+
+// Describes the purpose of each existing skill, without adding proficiency claims.
+export const skillDescriptions: Record<string, string> = {
+  "HTML & CSS":
+    "Structure, typography, and layout — the foundation of a readable, responsive interface.",
+  JavaScript:
+    "The interaction layer: responding to input and bringing an interface to life.",
+  TypeScript:
+    "Clear data types that help keep components consistent and code easier to maintain.",
+  React:
+    "Reusable components that turn individual interface elements into a cohesive experience.",
+  "Next.js":
+    "A framework for connecting React interfaces with routing, rendering, and image optimization.",
+  "Tailwind CSS":
+    "A consistent set of styling utilities for shaping layouts across screen sizes.",
+  Figma:
+    "A shared canvas for exploring layouts, interface ideas, and visual direction.",
+  "UI/UX Design":
+    "Connecting visual hierarchy with clear navigation and thoughtful user journeys.",
+  "Responsive Design":
+    "Layouts that adapt to the screen while keeping content readable and controls comfortable.",
+  Wireframing:
+    "Starting with structure: mapping content and interactions before refining the visual details.",
+  Prototyping:
+    "Connecting screens and interactions to explore how an experience flows.",
+  "Git & GitHub":
+    "Version control and a shared history for tracking changes and collaborating on code.",
+  "VS Code":
+    "An editing workspace for navigating code, refining components, and reviewing changes.",
+  Vercel:
+    "Taking a Next.js project from a local build to a shareable web deployment.",
+  npm: "Managing the packages and scripts that support development and production builds.",
+};
+
+export const professionalSkillDescriptions: Record<string, string> = {
+  "Creative thinking":
+    "Explore possibilities. Give every idea a clear visual direction.",
+  "Attention to detail":
+    "Refine the spacing, the interactions, and the moments in between.",
+  Collaboration:
+    "Share ideas, listen to feedback, and build toward a common goal.",
+};
 
 // Supported by the profile's design focus and collaborative coursework.
 export const professionalSkills = [
