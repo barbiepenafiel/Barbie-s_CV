@@ -28,7 +28,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/barbie-penafiel-675765376/",
   github: "https://github.com/barbiepenafiel",
   portrait: {
-    src: "/images/cv_pic.png",
+    src: "/images/barbie-portrait-clear.png",
     alt: "Portrait of Barbie Peñafiel, smiling, wearing a red blazer",
   },
 };

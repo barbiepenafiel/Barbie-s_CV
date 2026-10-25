@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { profile } from "@/lib/content";
 import { ArrowUpRightIcon } from "./icons";
-import { SocialLinks } from "./SocialLinks";
 
 export function ProfileSection() {
   return (
@@ -30,7 +29,6 @@ export function ProfileSection() {
               <span className="sr-only"> (PDF)</span>
             </a>
           </div>
-          <SocialLinks />
           <div className="hero-details">
             <span className="hero-detail-dot" aria-hidden="true" />
             <p>{profile.location}</p>
@@ -47,6 +45,7 @@ export function ProfileSection() {
             fill
             sizes="(min-width: 1280px) 580px, (min-width: 768px) 48vw, 92vw"
             className="hero-portrait-image"
+            quality={95}
             preload
           />
           <figcaption className="hero-photo-note">

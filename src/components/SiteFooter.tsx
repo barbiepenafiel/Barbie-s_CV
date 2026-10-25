@@ -1,5 +1,4 @@
 import { profile, site } from "@/lib/content";
-import { SocialLinks } from "./SocialLinks";
 export function SiteFooter() {
   return (
     <footer className="site-footer">
@@ -23,7 +22,7 @@ export function SiteFooter() {
             <a className="footer-email" href={`mailto:${profile.email}`}>
               {profile.email}
             </a>
-            <SocialLinks />
+            <a href="#contact">Find me online ↗</a>
           </div>
         </div>
         <div className="footer-bottom">

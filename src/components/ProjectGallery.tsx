@@ -192,16 +192,6 @@ export function ProjectGallery({ projects }: { projects: Project[] }) {
               ))}
             </ul>
             <div className="project-dialog-links">
-              <a
-                href={selected.source}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-link"
-              >
-                Open original file
-                <ArrowUpRightIcon />
-                <span className="sr-only"> (opens in a new tab)</span>
-              </a>
               {selected.repository && (
                 <a
                   href={selected.repository}

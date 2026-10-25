@@ -7,7 +7,7 @@
 | Personal profile | Barbie Peñafiel; Web Designer · Creative Developer; original full-color portrait, introduction, career direction, location, email and verified social links. Professional branding remains separate from education. |
 | Education | Davao del Norte State College, BS Information Technology, current enrollment and expected 2027 graduation, supported by the supplied résumé. |
 | Skills | Four interactive categories with 21 skills. Descriptions explain the tools without arbitrary percentages. Added creative tools and MySQL are supported by the supplied résumé. |
-| Projects | Six supplied project groups: Campedals, DSP Publishing website concept, Fashion Storefront concept, DSP Celebration Posters, Campus Information Brochure and Tempura Brochure. Real artwork, categories, descriptive tags, source links and image galleries; no fabricated live demos or repositories. |
+| Projects | Six supplied project groups: Campedals, DSP Publishing website concept, Fashion Storefront concept, DSP Celebration Posters, Campus Information Brochure and Tempura Brochure. Real artwork, categories, descriptive tags and image galleries; no fabricated live demos or repositories. |
 | Experience | Graphic design and web development for school, independent and freelance work, using the role, dates and responsibilities supplied in the résumé without adding client names or employers. |
 | Achievements | Two completion records: Cisco Networking Academy course (11 November 2025) and DNSC AI seminar (29 September 2026). Course completion is explicitly distinguished from the professional CCNA certification exam. |
 | UI design | Cream backgrounds, warm taupe accents, serif headings, rounded cards, curved portrait frame and a dark credential section. Original artwork retains its own colors. |
@@ -24,7 +24,7 @@ The owner supplied a shared portfolio folder containing project artwork, an orig
 
 The résumé and Cisco PDF under `public/documents/` match their supplied originals by SHA-256. They have not been edited. The résumé retains its original wording and original portfolio URL. Website branding continues to use Web Designer · Creative Developer.
 
-Original downloads and PDF renders are stored in ignored `artifacts/`. Production uses WebP previews, while original files remain accessible through verified Drive source links. Artwork-only projects are labeled as concepts or visual work rather than falsely claiming deployed applications.
+Original downloads and PDF renders are stored in ignored `artifacts/`. Production uses WebP previews, while supplied source URLs remain recorded in content metadata. Artwork-only projects are labeled as concepts or visual work rather than falsely claiming deployed applications.
 
 ## Validation
 
@@ -41,3 +41,8 @@ Original downloads and PDF renders are stored in ignored `artifacts/`. Productio
 `README.md` contains only Barbie’s profile, education, toolkit, real selected work, continued learning and contact information. It does not mention design references. `DEVELOPMENT.md` contains setup, implementation, editing and deployment instructions.
 
 The owner has authorized automatic publishing. The recurring rule has been updated to preserve the current cream editorial design, real project gallery, original full-color portrait, original documents and verified qualifications. Completed source changes are committed as Barbie Peñafiel, pushed normally to GitHub, deployed to the existing Vercel project and checked on the production domain. The latest successful publication is recorded in ignored `artifacts/publication-state.json`.
+
+
+## Portrait and toolkit refinement
+
+The owner-supplied clearer portrait replaces the earlier image, stays in original color, and uses high-quality responsive delivery. All 21 toolkit buttons include decorative vector icons while preserving text labels and keyboard selection. Project viewers omit the original-file link. GitHub and LinkedIn appear once as descriptive contact cards; the footer links to that contact section.

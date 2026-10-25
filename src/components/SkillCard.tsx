@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ToolkitIcon } from "./ToolkitIcon";
 import type { SkillCategory } from "@/lib/content";
 
 type SkillCardProps = {
@@ -115,7 +116,8 @@ export function SkillCard({ category, index, descriptions }: SkillCardProps) {
             aria-controls={panelId}
             onClick={() => setSelected(skill)}
           >
-            {skill}
+            <ToolkitIcon name={skill} />
+            <span>{skill}</span>
           </button>
         ))}
       </div>

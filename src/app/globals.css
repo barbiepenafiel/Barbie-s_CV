@@ -329,11 +329,8 @@ button {
   writing-mode: vertical-rl;
 }
 .hero-portrait-image {
-  object-fit: contain;
-  object-position: center bottom;
-  height: 118% !important;
-  top: auto !important;
-  bottom: 0 !important;
+  object-fit: cover;
+  object-position: center 62%;
   z-index: 1;
   transition: transform 0.6s;
 }
@@ -620,6 +617,9 @@ button {
   margin-top: 1.1rem;
 }
 .skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   min-height: 44px;
   border: 1px solid var(--card-border);
   border-radius: 999px;
@@ -1404,4 +1404,47 @@ button {
   .skill-card:hover .skill-art-rotate {
     transform: none;
   }
+}
+
+.toolkit-icon {
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+}
+.social-profiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+.social-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+.social-profile:hover {
+  background: var(--surface);
+  border-color: var(--accent);
+}
+.social-profile > svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.social-profile strong {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+.social-profile small {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
 }

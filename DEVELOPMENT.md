@@ -38,7 +38,7 @@ Next.js checks TypeScript during the production build. Inter is bundled locally 
 
 Keep personal content in `src/lib/content.ts`. New projects need an id, name, category, accurate description, tags, preview, gallery images, and verified source URL. Repository and live demo links are optional; add them only when actual URLs exist. Projects without working code links can still show their supplied visual work honestly.
 
-The gallery filters real project categories. Its native modal supports keyboard focus, Escape, image navigation, source links and scroll locking. Skill buttons expose a selected state and announce their explanation. The contact form prepares a mailto draft; sending happens in the visitor’s email app. The résumé link downloads the original file.
+The gallery filters real project categories. Its native modal supports keyboard focus, Escape, image navigation and scroll locking. Skill buttons expose a selected state and announce their explanation. The contact form prepares a mailto draft; sending happens in the visitor’s email app. The résumé link downloads the original file.
 
 Only add verified achievements. The Cisco document is course completion and must not be described as passing the professional CCNA exam. Displayed PDF files are supplied originals; do not silently rewrite them. The downloadable résumé retains its original wording and original portfolio URL.
 
