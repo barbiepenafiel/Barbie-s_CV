@@ -46,3 +46,7 @@ The owner has authorized automatic publishing. The recurring rule has been updat
 ## Portrait and toolkit refinement
 
 The owner-supplied clearer portrait replaces the earlier image, stays in original color, and uses high-quality responsive delivery. All 21 toolkit buttons include decorative vector icons while preserving text labels and keyboard selection. Project viewers omit the original-file link. GitHub and LinkedIn appear once as descriptive contact cards; the footer links to that contact section.
+
+## IT415 application and navigation update
+
+Header navigation uses 15px text on desktop, 16px mobile links and a 14px contact action. The full menu starts at 1280px to preserve room for all links. A separate About route includes verified background and a real GitHub public-profile data request configured by a server-side environment variable. Validation covers responsive header overlap, cross-page links, API responses, loading/failure/retry behavior and original documents. Deployment evidence and the module checklist live separately from the personal-only README.

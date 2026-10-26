@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 import { profile } from "@/lib/content";
 import { SectionHeading } from "./SectionHeading";
 
-export function AboutSection() {
+export function AboutSection({ standalone = false }: { standalone?: boolean }) {
   return (
     <section
       tabIndex={-1}
@@ -65,9 +66,12 @@ export function AboutSection() {
               <i aria-hidden="true">✓</i> Responsive by design
             </span>
           </div>
-          <a href="#education" className="button button-outline mt-6">
+          <Link
+            href={standalone ? "#education" : "/about"}
+            className="button button-outline mt-6"
+          >
             More about my background<span aria-hidden="true">↗</span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>

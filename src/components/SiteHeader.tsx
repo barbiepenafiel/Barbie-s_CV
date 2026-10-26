@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { achievements, navLinks, profile } from "@/lib/content";
 const links = [
@@ -8,15 +9,16 @@ const links = [
     : []),
   navLinks[navLinks.length - 1],
 ];
-export function SiteHeader() {
+export function SiteHeader({ innerPage = false }: { innerPage?: boolean }) {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("#profile");
+  const [active, setActive] = useState(innerPage ? "#about" : "#profile");
   const [scrolled, setScrolled] = useState(false);
   const toggle = useRef<HTMLButtonElement>(null);
   const header = useRef<HTMLElement>(null);
   useEffect(() => {
     const update = () => {
       setScrolled(window.scrollY > 24);
+      if (innerPage) return;
       let current = "#profile";
       for (const link of links) {
         const section = document.querySelector(link.href);
@@ -33,7 +35,7 @@ export function SiteHeader() {
     update();
     window.addEventListener("scroll", update, { passive: true });
     const resize = () => {
-      if (window.innerWidth >= 1024) setOpen(false);
+      if (window.innerWidth >= 1280) setOpen(false);
       update();
     };
     window.addEventListener("resize", resize);
@@ -55,15 +57,21 @@ export function SiteHeader() {
       document.removeEventListener("keydown", escape);
       document.removeEventListener("pointerdown", outside);
     };
-  }, []);
+  }, [innerPage]);
   const navItem = (link: (typeof links)[number], mobile = false) => (
-    <a
+    <Link
       key={link.href}
-      href={link.href}
+      href={
+        innerPage
+          ? link.href === "#about"
+            ? "/about"
+            : `/${link.href}`
+          : link.href
+      }
       aria-current={active === link.href ? "location" : undefined}
       onClick={() => {
         setOpen(false);
-        if (mobile)
+        if (mobile && !innerPage)
           document
             .querySelector<HTMLElement>(link.href)
             ?.focus({ preventScroll: true });
@@ -71,7 +79,7 @@ export function SiteHeader() {
       className={`relative flex min-h-11 items-center text-xs transition-colors ${mobile ? "border-b border-border py-2" : "after:absolute after:inset-x-0 after:bottom-1 after:h-px after:origin-left after:bg-foreground after:transition-transform"} ${active === link.href ? "font-semibold after:scale-x-100" : "text-muted after:scale-x-0 hover:text-foreground hover:after:scale-x-100"}`}
     >
       {link.label}
-    </a>
+    </Link>
   );
   return (
     <header
@@ -79,8 +87,8 @@ export function SiteHeader() {
       className={`site-header sticky top-0 z-40 border-b border-border bg-background transition-shadow ${scrolled ? "shadow-sm" : ""}`}
     >
       <div className="wrap flex min-h-20 items-center justify-between gap-6">
-        <a
-          href="#profile"
+        <Link
+          href={innerPage ? "/" : "#profile"}
           aria-label={`${profile.firstName} ${profile.lastName}, home`}
           className="brand-link"
         >
@@ -93,10 +101,10 @@ export function SiteHeader() {
             </strong>
             <small>Design & development</small>
           </span>
-        </a>
+        </Link>
         <nav
           aria-label="Main navigation"
-          className="hidden items-center gap-4 lg:flex"
+          className="hidden items-center gap-4 xl:flex"
         >
           {links.map((link) => navItem(link))}
         </nav>
@@ -116,7 +124,7 @@ export function SiteHeader() {
           aria-controls="mobile-navigation"
           aria-label={open ? "Close navigation" : "Open navigation"}
           onClick={() => setOpen(!open)}
-          className="relative flex h-11 w-11 items-center justify-center border border-border lg:hidden"
+          className="relative flex h-11 w-11 items-center justify-center border border-border xl:hidden"
         >
           <span
             aria-hidden="true"

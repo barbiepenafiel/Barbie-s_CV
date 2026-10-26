@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-The project selects the official npm registry in `.npmrc`. No application environment variables are required. The Vercel CLI may create an ignored local authentication file; never commit it.
+The project selects the official npm registry in `.npmrc`. Set the server-only application variable `GITHUB_PROFILE_USERNAME=barbiepenafiel` in ignored `.env.local`. Configure the same non-secret username for Vercel Development, Preview and Production. No GitHub token is needed for this public profile request. The Vercel CLI may create an ignored local authentication file; never commit it.
 
 ## Validation and production
 
@@ -55,3 +55,14 @@ Existing Vercel project: `barbiepenafiels-projects/barbiepenafiel-cv`. Use the r
 Verify repository-local author and committer before committing: Barbie Peñafiel, `barbiepenafiel2019@gmail.com`. Fetch remote changes, validate, make meaningful commits and use normal fast-forward pushes to main. Do not force-push or rewrite history without new explicit authorization.
 
 The owner has authorized publishing completed changes automatically. A recurring check is attached to this chat. It must skip active work, exclude secrets/generated files, publish only after validation, and verify production before recording success in ignored `artifacts/publication-state.json`.
+
+
+## About page and external data
+
+The separate /about route reuses verified personal content and shared site components. Its GitHub panel calls /api/github, which reads the server-side username and requests the official GitHub public-profile API. Responses are validated, upstream data is cached for one hour, and the request times out after eight seconds. No credentials or upstream error details reach the browser. Loading, unavailable and retry states preserve a direct profile link. A missing or invalid username returns HTTP 503 and logs a configuration error.
+
+## IT415 release workflow
+
+Use a feature branch for the enlarged navigation and lab changes. Review the Vercel Preview deployment and run the same build and browser checks before merging into main. The existing Git integration is connected to this repository. Main is the production branch. Reuse a successful deployment rather than creating duplicate releases. Environment changes require a new deployment.
+
+For the controlled troubleshooting exercise, use an isolated preview with an intentionally invalid build command, inspect the first error in its build logs, and redeploy with the normal framework command. Never send the deliberate failure to production. For recovery, identify a known healthy production deployment, roll back to it, check the public site, then restore the current verified deployment. Preserve actual command transcripts, timestamps and deployment IDs in ignored artifacts/it415. Deployment credentials and local config files stay untracked.
