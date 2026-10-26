@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { achievements, navLinks, profile } from "@/lib/content";
+import { achievements, gmailDraftUrl, navLinks, profile } from "@/lib/content";
 const links = [
   ...navLinks.slice(0, -1),
   ...(achievements.length
@@ -109,9 +109,11 @@ export function SiteHeader({ innerPage = false }: { innerPage?: boolean }) {
           {links.map((link) => navItem(link))}
         </nav>
         <a
-          href={`mailto:${profile.email}?subject=${encodeURIComponent("Let’s work together")}`}
+          href={gmailDraftUrl("Let’s work together")}
+          target="_blank"
+          rel="noreferrer"
           onClick={() => setOpen(false)}
-          aria-label="Let’s talk — open your email app"
+          aria-label="Let’s talk — open a Gmail draft in a new tab"
           className="header-contact hidden min-h-11 items-center gap-3 text-xs sm:inline-flex"
         >
           Let’s talk <span aria-hidden="true">↗</span>

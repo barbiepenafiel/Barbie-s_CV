@@ -33,6 +33,16 @@ export const profile = {
   },
 };
 
+export function gmailDraftUrl(subject: string) {
+  const params = new URLSearchParams({
+    view: "cm",
+    fs: "1",
+    to: profile.email,
+    su: subject,
+  });
+  return `https://mail.google.com/mail/?${params.toString()}`;
+}
+
 export type EducationEntry = {
   school: string;
   shortName: string;
