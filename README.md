@@ -63,7 +63,7 @@ Explore the artwork in my [portfolio gallery](https://barbiepenafiel-cv.vercel.a
 
 ## My Résumé
 
-[Download my résumé (PDF)](https://barbiepenafiel-cv.vercel.app/documents/barbie-penafiel-resume.pdf)
+[View my résumé (PDF)](https://barbiepenafiel-cv.vercel.app/documents/barbie-penafiel-resume.pdf)
 
 ## Let’s Connect
 

@@ -44,8 +44,13 @@ export default function AboutPage() {
           <Link href="/#contact" className="button button-primary">
             Let’s create something ↗
           </Link>
-          <a href={profile.resume} download className="button button-outline">
-            Download my CV (PDF) ↓
+          <a
+            href={profile.resume}
+            target="_blank"
+            rel="noreferrer"
+            className="button button-outline"
+          >
+            View my CV (PDF) ↗
           </a>
         </div>
       </main>

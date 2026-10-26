@@ -24,9 +24,14 @@ export function ProfileSection() {
               View My Work
               <ArrowUpRightIcon />
             </a>
-            <a href={profile.resume} download className="button button-outline">
-              Download CV<span aria-hidden="true">↓</span>
-              <span className="sr-only"> (PDF)</span>
+            <a
+              href={profile.resume}
+              target="_blank"
+              rel="noreferrer"
+              className="button button-outline"
+            >
+              View CV<span aria-hidden="true">↗</span>
+              <span className="sr-only"> (PDF, opens in a new tab)</span>
             </a>
           </div>
           <div className="hero-details">

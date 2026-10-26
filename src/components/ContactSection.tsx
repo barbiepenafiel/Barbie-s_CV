@@ -36,11 +36,12 @@ export function ContactSection() {
           <SocialLinks />
           <a
             href={profile.resume}
-            download
+            target="_blank"
+            rel="noreferrer"
             className="button button-outline mt-6"
           >
-            Download my CV<span aria-hidden="true">↓</span>
-            <span className="sr-only"> (PDF)</span>
+            View my CV<span aria-hidden="true">↗</span>
+            <span className="sr-only"> (PDF, opens in a new tab)</span>
           </a>
         </div>
         <div className="contact-form-card">
